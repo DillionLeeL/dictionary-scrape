@@ -10,7 +10,7 @@ def main(args):
 
     f = open("words2.txt", "w", encoding="utf-8")
 
-    for x in range(16,19):
+    for x in range(26):
         print("Scraping words that begin with", string.ascii_lowercase[x])
         # Maximum of 100 pages per letter
         for y in range(1,101):
