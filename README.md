@@ -14,7 +14,9 @@ Further processing of the output file to remove duplicates and alphabetize entri
 
 Arguments:
 
---alpha     Remove entries that contain hyphens, spaces, numbers, or other non-letter characters
---full      Allow only full words, removing acronyms and initialisms
+--alpha        - Remove entries that contain hyphens, spaces, numbers, or other non-letter characters
+
+--full         - Allow only full words, removing acronyms and initialisms
+
 
 Recommended usage: python ./dictionaryscrape.py --alpha --full
