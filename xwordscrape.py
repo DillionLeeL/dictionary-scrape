@@ -11,7 +11,7 @@ def daterange(date1, date2):
 
 def main():
     url = "https://www.xwordinfo.com/JSON/Data.aspx"
-    f = open("xwords.txt", "w")
+    f = open("xwords.txt", "w", encoding="utf-8")
 
     # For whatever reason the API will not return data on a GET without the "Referer" header
     my_headers = {
@@ -22,8 +22,8 @@ def main():
     "Host": "www.xwordinfo.com"
     }
 
-    start_dt = date(2015, 12, 20)
-    end_dt = date(2016, 1, 11)
+    start_dt = date(2019, 12, 20)
+    end_dt = date(2021, 6, 22)
     for dt in daterange(start_dt, end_dt):
         curr_dt = dt.strftime("%m/%d/%Y")
 
@@ -35,6 +35,9 @@ def main():
             for x in range(len(data["answers"]["across"])):
                 # the api returns escaped character and numbers before the answers so split on that and take second element
                 f.write(html.unescape(data["answers"]["across"][x])+'\n'+html.unescape(data["clues"]["across"][x]).split(". ")[1]+'\n')
+
+            for x in range(len(data["answers"]["down"])):
+                f.write(html.unescape(data["answers"]["down"][x])+'\n'+html.unescape(data["clues"]["down"][x]).split(". ")[1]+'\n')
 
         except requests.exceptions.RequestException as e:
             raise SystemExit(e)
